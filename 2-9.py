@@ -1,18 +1,13 @@
 import random
 
 def dirt_placing():
-    loc_A1 = random.choice(['Clean', 'Dirty'])
-    loc_B1 = random.choice(['Clean', 'Dirty'])
-    print ("A:"+loc_A1)
-    print ("B:"+loc_B1)
-    return loc_A1,loc_B1
+    loc_A = random.choice(['Clean', 'Dirty'])
+    loc_B = random.choice(['Clean', 'Dirty'])
+    return loc_A,loc_B
 def init_loc():
     vacuum_loc = random.choice(['loc_A','loc_B'])
-    print("init:"+vacuum_loc)
     return vacuum_loc
-def socre(actions,loc_1,loc_2):
-    loc_A = loc_1
-    loc_B = loc_2
+def socre(actions,loc_A,loc_B):
     your_score = 0
     if actions is 'Left':
         your_score = your_score - 1
@@ -31,13 +26,11 @@ def rule(location):
     location_lists = []
     enviroment_state_lists = []
     location_lists.append(location)
-    print(location_lists)
     action = ""
     if location_lists == ['loc_A']:
         enviroment_state_lists.append(loc_A)
     elif location_lists == ['loc_B']:
         enviroment_state_lists.append(loc_B)
-    print(enviroment_state_lists)
     for location_list in location_lists:
         if location_list is "loc_A":
             for enviroment_state_list in enviroment_state_lists:
