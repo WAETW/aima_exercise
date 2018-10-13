@@ -1,5 +1,5 @@
 import random
-
+import sys
 '''初始化環境'''
 def dirt_placing():
     loc_A = random.choice(['Clean', 'Dirty'])
@@ -30,27 +30,22 @@ def socre(actions,loc_A,loc_B):
 '''定義規則'''
 def rule(location):
     loc_A,loc_B = dirt_placing()
-    location_lists = []
-    enviroment_state_lists = []
-    location_lists.append(location)
-    action = ""
-    if location_lists == ['loc_A']:
-        enviroment_state_lists.append(loc_A)
-    elif location_lists == ['loc_B']:
-        enviroment_state_lists.append(loc_B)
-    for location_list in location_lists:
-        if location_list is "loc_A":
-            for enviroment_state_list in enviroment_state_lists:
-                if enviroment_state_list is "Clean":
-                    action = "Right"
-                else:
-                    action = "Suck"
-        elif location_list is "loc_B":
-            for enviroment_state_list in enviroment_state_lists:
-                if enviroment_state_list is "Clean":
-                    action = "Left"
-                else:
-                    action = "Suck"
+    action = ''
+    enviroment_state = ''
+    if location is 'loc_A':
+        enviroment_state = loc_A
+    elif location is 'loc_B':
+        enviroment_state = loc_B
+    if location is "loc_A":
+        if enviroment_state is "Clean":
+            action = "Right"
+        else:
+            action = "Suck"
+    elif location is "loc_B":
+        if enviroment_state is "Clean":
+            action = "Left"
+        else:
+            action = "Suck"
     print(action)
     return action,loc_A,loc_B
 '''建立環境，episodes為執行次數'''
@@ -68,4 +63,10 @@ def enviroment(episodes):
             temp_score,vacuum_loc = socre(action,loc_A,loc_B)
             performence_score = performence_score + temp_score
     print(performence_score)
-enviroment(5)
+def main():
+    input = sys.argv[1]
+    episodes = int(input[0])
+    enviroment(episodes)
+if __name__ == "__main__":
+    main()
+'''執行方法 python3 2-9.py 5，5為要執行的次數可自行更改 '''
