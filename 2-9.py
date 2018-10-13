@@ -9,7 +9,7 @@ def dirt_placing():
 def init_loc():
     vacuum_init_loc = random.choice(['loc_A','loc_B'])
     return vacuum_init_loc
-'''計算分數，agent往左往右扣一分，吸則得十分(參考Github Repo上提供的計算範例)''''
+'''計算分數，agent往左往右扣一分，吸則得十分(參考Github Repo上提供的計算範例)'''
 def socre(actions,loc_A,loc_B):
     your_score = 0
     vacuum_loc = ''
