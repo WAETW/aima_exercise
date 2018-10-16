@@ -64,9 +64,12 @@ def enviroment(episodes):
             performence_score = performence_score + temp_score
     print(performence_score)
 def main():
-    input = sys.argv[1]
-    episodes = int(input[0])
-    enviroment(episodes)
+    try:
+        input = sys.argv[1]
+        episodes = int(input[0])
+        enviroment(episodes)
+    except:
+        print("請輸入參數!!!")
 if __name__ == "__main__":
     main()
 '''執行方法 python3 2-9.py 5，5為要執行的次數可自行更改 '''
